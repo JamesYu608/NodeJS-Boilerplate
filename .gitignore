@@ -4,6 +4,9 @@ node_modules/
 # Env file
 .env
 
+# Unit test / coverage reports
+coverage/
+
 # OS auto-generated files
 .DS_Store
 ._*
