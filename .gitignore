@@ -1,0 +1,9 @@
+# Node
+node_modules/
+
+# OS auto-generated files
+.DS_Store
+._*
+
+# IDE files
+.idea/

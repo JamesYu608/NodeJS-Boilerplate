@@ -1,0 +1,11 @@
+{
+  "name": "best-practice-boilerplate",
+  "version": "1.0.0",
+  "description": "Follow https://github.com/i0natan/nodebestpractices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jamesyu608@gmail.com",
+  "license": "ISC"
+}
