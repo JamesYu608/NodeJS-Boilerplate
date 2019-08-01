@@ -1,0 +1,6 @@
+CREATE TABLE tbl_user (
+   user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+   name VARCHAR (50) NOT NULL,
+   age INT NOT NULL,
+   PRIMARY KEY (user_id)
+);

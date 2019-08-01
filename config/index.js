@@ -1,18 +1,17 @@
 require('dotenv').config()
-const Ajv = require('ajv')
-const ajv = new Ajv({ removeAdditional: true, useDefaults: true, coerceTypes: true })
-
-const schema = {
-  type: 'object',
-  properties: {
-    PORT: { 'type': 'number' },
-  },
-  required: ['PORT']
-}
-const validate = ajv.compile(schema)
+const { validate } = require('./schema')
 
 const config = {
-  PORT: process.env.PORT
+  PORT: process.env.PORT,
+  repositories: {
+    rds: {
+      CLIENT: process.env.RDS_CLIENT,
+      DATABASE: process.env.RDS_DATABASE,
+      USER: process.env.RDS_USER,
+      PASSWORD: process.env.RDS_PASSWORD,
+      HOST: process.env.RDS_HOST,
+    }
+  }
 }
 
 if (!validate(config)) throw new Error(validate.errors.map(e => e.message).join('\n'))
