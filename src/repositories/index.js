@@ -11,6 +11,11 @@ const rdsConnection = knex({
   }
 })
 
+async function shutDown () {
+  await rdsConnection.destroy()
+}
+
 module.exports = {
-  rds: rdsConnection
+  rds: rdsConnection,
+  shutDown
 }

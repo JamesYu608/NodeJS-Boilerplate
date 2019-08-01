@@ -1,1 +1,5 @@
-console.log('integrationSetup.js is called')
+const repositories = require('./src/repositories')
+
+afterAll(async () => {
+  await repositories.shutDown()
+})

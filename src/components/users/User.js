@@ -1,6 +1,6 @@
 class User {
   constructor (data) {
-    this.id = -1
+    this.id = data.id || -1
     this.name = data.name
     this.age = data.age
   }
