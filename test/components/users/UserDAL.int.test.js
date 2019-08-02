@@ -1,6 +1,7 @@
 const User = require('../../../src/components/users/User')
 const UserDAL = require('../../../src/components/users/UserDAL')
 const repositories = require('../../../src/repositories')
+const { createAndSaveUser } = require('../../util/seedUserUtil')
 
 describe('[Integration][Component] UserDAL', () => {
   let userDAL
@@ -41,13 +42,4 @@ describe('[Integration][Component] UserDAL', () => {
     const result = await userDAL.deleteByID(user.id)
     expect(result).toBe(true)
   })
-
-  async function createAndSaveUser () {
-    const user = new User({
-      name: 'James',
-      age: 30
-    })
-    user.id = await userDAL.save(user)
-    return user
-  }
 })

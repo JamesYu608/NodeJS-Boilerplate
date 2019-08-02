@@ -15,7 +15,7 @@ class UserDAL {
         })
       return result[0]
     } catch (error) {
-      throw new Error(`[SQL Error] Save user error: ${error.toString()}`)
+      throw new Error(`[SQL Error] Save user error: ${error}`)
     }
   }
 
@@ -34,7 +34,7 @@ class UserDAL {
         })
       }
     } catch (error) {
-      throw new Error(`[SQL Error] Get user by ID error: ${error.toString()}`)
+      throw new Error(`[SQL Error] Get user by ID error: ${error}`)
     }
   }
 
@@ -52,7 +52,7 @@ class UserDAL {
         }))
       }
     } catch (error) {
-      throw new Error(`[SQL Error] Get all users error: ${error.toString()}`)
+      throw new Error(`[SQL Error] Get all users error: ${error}`)
     }
   }
 
@@ -66,7 +66,7 @@ class UserDAL {
         })
       return result === 1
     } catch (error) {
-      throw new Error(`[SQL Error] Update user error: ${error.toString()}`)
+      throw new Error(`[SQL Error] Update user error: ${error}`)
     }
   }
 
@@ -76,7 +76,7 @@ class UserDAL {
         .where(columns.ID, id).del()
       return result === 1
     } catch (error) {
-      throw new Error(`[SQL Error] Remove user error: ${error.toString()}`)
+      throw new Error(`[SQL Error] Remove user error: ${error}`)
     }
   }
 }
