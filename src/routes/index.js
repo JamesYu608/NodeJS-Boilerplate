@@ -11,7 +11,7 @@ apiRouter.use('/users', users)
 
 const router = Router()
 router.get('/health', healthCheck)
-router.use(sessionLogger.middleware)
+router.use(sessionLogger.init)
 router.use(loggingRequest)
 router.use('/api', apiRouter)
 router.use(errorHandlingRoute)
@@ -29,7 +29,8 @@ async function errorHandlingRoute (err, req, res, next) {
   } else {
     res.status(err.code).json({
       code: err.code,
-      message: err.message
+      message: err.message,
+      id: req.sessionID
     })
   }
 }

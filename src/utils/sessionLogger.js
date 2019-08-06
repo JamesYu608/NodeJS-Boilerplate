@@ -9,7 +9,7 @@ const logger = new Proxy(sourceLogger, {
   },
 })
 
-function middleware (req, res, next) {
+function init (req, res, next) {
   clsNamespace.bind(req)
   clsNamespace.bind(res)
 
@@ -18,11 +18,12 @@ function middleware (req, res, next) {
 
   clsNamespace.run(() => {
     clsNamespace.set('loggerCls', loggerWithTraceId)
+    req.sessionID = sessionID
     next()
   })
 }
 
 module.exports = {
-  middleware,
+  init,
   logger
 }
