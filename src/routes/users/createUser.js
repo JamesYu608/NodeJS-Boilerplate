@@ -9,13 +9,9 @@ async function createUser (req, res) {
     age
   })
   const userDAL = new UserDAL(repositories)
-  try {
-    res.json({
-      id: await userDAL.save(user)
-    })
-  } catch (error) {
-    throw new Error(`[Route][Users] create user error: ${error}`)
-  }
+  res.json({
+    id: await userDAL.save(user)
+  })
 }
 
 module.exports = createUser

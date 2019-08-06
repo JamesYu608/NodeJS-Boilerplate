@@ -1,15 +1,10 @@
 const repositories = require('../../repositories')
 const UserDAL = require('../../components/users/UserDAL')
+const AppError = require('../../utils/AppError')
 
 async function getUser (req, res) {
   const userDAL = new UserDAL(repositories)
-  let result
-  try {
-    result = await userDAL.getByID(req.params.id)
-  } catch (error) {
-    throw new Error(`[Route][Users] get user error: ${error}`)
-  }
-
+  const result = await userDAL.getByID(req.params.id)
   if (result) {
     res.json({
       id: result.id,
@@ -17,7 +12,7 @@ async function getUser (req, res) {
       age: result.age
     })
   } else {
-    throw new Error('NotFoundError')
+    throw AppError.notFound('User not found')
   }
 }
 

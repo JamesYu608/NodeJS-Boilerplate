@@ -11,12 +11,20 @@ describe('[Integration][Route] Users', () => {
     expect(Array.isArray(result.users)).toBe(true)
   })
 
-  test('getUser, ', async () => {
-    const user = await createAndSaveUser()
-    const { body: result } = await request(app)
-      .get(`/api/users/${user.id}`)
-      .expect(200)
-    expect(result.id).toBe(user.id)
+  describe('getUser', () => {
+    test('success, ', async () => {
+      const user = await createAndSaveUser()
+      const { body: result } = await request(app)
+        .get(`/api/users/${user.id}`)
+        .expect(200)
+      expect(result.id).toBe(user.id)
+    })
+
+    test('not found, ', async () => {
+      const { body: result } = await request(app)
+        .get(`/api/users/99999999`)
+        .expect(404)
+    })
   })
 
   test('createUser, ', async () => {

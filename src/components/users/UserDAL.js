@@ -1,5 +1,6 @@
 const User = require('./User')
 const { NAME: TABLE_NAME, columns } = require('../../repositories/userTableSchema')
+const AppError = require('../../utils/AppError')
 
 class UserDAL {
   constructor (repositories) {
@@ -15,7 +16,7 @@ class UserDAL {
         })
       return result[0]
     } catch (error) {
-      throw new Error(`[SQL Error] Save user error: ${error}`)
+      throw new AppError.badImplementation(null, `[SQL Error] Save user error: ${error}`)
     }
   }
 
@@ -34,7 +35,7 @@ class UserDAL {
         })
       }
     } catch (error) {
-      throw new Error(`[SQL Error] Get user by ID error: ${error}`)
+      throw new AppError.badImplementation(null, `[SQL Error] Get user by ID error: ${error}`)
     }
   }
 
@@ -52,7 +53,7 @@ class UserDAL {
         }))
       }
     } catch (error) {
-      throw new Error(`[SQL Error] Get all users error: ${error}`)
+      throw new AppError.badImplementation(null, `[SQL Error] Get all users error: ${error}`)
     }
   }
 
@@ -66,7 +67,7 @@ class UserDAL {
         })
       return result === 1
     } catch (error) {
-      throw new Error(`[SQL Error] Update user error: ${error}`)
+      throw new AppError.badImplementation(null, `[SQL Error] Update user error: ${error}`)
     }
   }
 
@@ -76,7 +77,7 @@ class UserDAL {
         .where(columns.ID, id).del()
       return result === 1
     } catch (error) {
-      throw new Error(`[SQL Error] Remove user error: ${error}`)
+      throw new AppError.badImplementation(null, `[SQL Error] Remove user error: ${error}`)
     }
   }
 }

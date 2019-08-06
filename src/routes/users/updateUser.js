@@ -11,14 +11,10 @@ async function updateUser (req, res) {
     age
   })
   const userDAL = new UserDAL(repositories)
-  try {
-    await userDAL.update(user)
-    res.json({
-      updated: true
-    })
-  } catch (error) {
-    throw new Error(`[Route][Users] update user error: ${error}`)
-  }
+  await userDAL.update(user)
+  res.json({
+    updated: true
+  })
 }
 
 module.exports = updateUser
