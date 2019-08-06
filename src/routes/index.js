@@ -5,6 +5,7 @@ const loggingRequest = require('../middlewares/loggingRequest')
 const users = require('./users')
 const errorHandler = require('../middlewares/errorHandler')
 const AppError = require('../utils/AppError')
+
 const apiRouter = Router()
 apiRouter.use(bodyParser.json())
 apiRouter.use('/users', users)

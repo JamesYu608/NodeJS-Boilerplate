@@ -2,7 +2,24 @@ const repositories = require('../../repositories')
 const User = require('../../components/users/User')
 const UserDAL = require('../../components/users/UserDAL')
 
-async function createUser (req, res) {
+const schema = {
+  body: {
+    type: 'object',
+    properties: {
+      name: {
+        type: 'string',
+        example: 'James'
+      },
+      age: {
+        type: 'integer',
+        example: 30
+      }
+    },
+    required: ['name', 'age']
+  }
+}
+
+async function route (req, res) {
   const { name, age } = req.body
   const user = new User({
     name,
@@ -14,4 +31,7 @@ async function createUser (req, res) {
   })
 }
 
-module.exports = createUser
+module.exports = {
+  route,
+  schema
+}
