@@ -1,8 +1,8 @@
 const clsNamespace = require('cls-hooked').getNamespace('app')
 
-const logger = require('pino')()
+const sourceLogger = require('pino')()
 
-const loggerCls = new Proxy(logger, {
+const logger = new Proxy(sourceLogger, {
   get (target, property, receiver) {
     target = clsNamespace.get('loggerCls') || target
     return Reflect.get(target, property, receiver)
@@ -10,6 +10,6 @@ const loggerCls = new Proxy(logger, {
 })
 
 module.exports = {
-  logger,
-  loggerCls
+  sourceLogger,
+  logger
 }

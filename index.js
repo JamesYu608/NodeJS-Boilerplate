@@ -1,4 +1,5 @@
 const { PORT } = require('./config')
 const app = require('./src/app')
+const { logger } = require('./src/utils/logger')
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+app.listen(PORT, () => logger.info(`Example app listening on port ${PORT}!`))
