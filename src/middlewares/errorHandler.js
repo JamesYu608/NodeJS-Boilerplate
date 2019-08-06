@@ -1,4 +1,4 @@
-const { logger } = require('../utils/logger')
+const { logger } = require('../utils/sessionLogger')
 
 async function errorHandler (err) {
   logger.error('ErrorHandler', err)

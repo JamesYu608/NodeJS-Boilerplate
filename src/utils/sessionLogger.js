@@ -1,8 +1,15 @@
 const clsNamespace = require('cls-hooked').createNamespace('app')
 const uuid = require('uuid/v4')
-const { sourceLogger } = require('../utils/logger')
 
-function session (req, res, next) {
+const sourceLogger = require('pino')()
+const logger = new Proxy(sourceLogger, {
+  get (target, property, receiver) {
+    target = clsNamespace.get('loggerCls') || target
+    return Reflect.get(target, property, receiver)
+  },
+})
+
+function middleware (req, res, next) {
   clsNamespace.bind(req)
   clsNamespace.bind(res)
 
@@ -15,4 +22,7 @@ function session (req, res, next) {
   })
 }
 
-module.exports = session
+module.exports = {
+  middleware,
+  logger
+}
