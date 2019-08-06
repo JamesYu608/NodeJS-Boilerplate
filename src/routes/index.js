@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const sessionLogger = require('../utils/sessionLogger')
 const loggingRequest = require('../middlewares/loggingRequest')
 const users = require('./users')
-const errorHandler = require('../middlewares/errorHandler')
+const errorHandler = require('../utils/errorHandler')
 const AppError = require('../utils/AppError')
 
 const apiRouter = Router()
