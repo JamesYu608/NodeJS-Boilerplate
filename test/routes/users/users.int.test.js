@@ -21,7 +21,7 @@ describe('[Integration][Route] Users', () => {
     })
 
     test('not found, ', async () => {
-      const { body: result } = await request(app)
+      await request(app)
         .get(`/api/users/99999999`)
         .expect(404)
     })

@@ -10,9 +10,9 @@ function validator (schema) {
 
     function validate (schema, target) {
       const validate = ajv.compile(schema)
-      if (!validate(target)) throw AppError.badRequest(
-        validate.errors.map(e => e.message).join('\n')
-      )
+      if (!validate(target)) {
+        throw AppError.badRequest(validate.errors.map(e => e.message).join('\n'))
+      }
     }
   }
 }

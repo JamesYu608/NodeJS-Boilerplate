@@ -15,7 +15,7 @@ const rdsSchema = {
 const schema = {
   type: 'object',
   properties: {
-    PORT: { 'type': 'number' },
+    PORT: { type: 'number' },
     repositories: {
       type: 'object',
       properties: {

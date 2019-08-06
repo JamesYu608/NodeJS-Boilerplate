@@ -6,9 +6,20 @@
   "scripts": {
     "start:dev": "node ./index.js | pino-pretty",
     "start": "node ./index.js",
-    "test": "jest --config=jest.config.js --detectOpenHandles",
+    "test": "standard && jest --config=jest.config.js --detectOpenHandles",
     "unit": "jest --config=jest.config.unit.js --detectOpenHandles",
     "integration": "jest --config=jest.config.integration.js --detectOpenHandles"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "test",
+      "expect",
+      "beforeEach",
+      "beforeAll",
+      "afterEach",
+      "afterAll"
+    ]
   },
   "author": "jamesyu608@gmail.com",
   "license": "ISC",
@@ -27,6 +38,7 @@
   "devDependencies": {
     "jest": "^24.8.0",
     "pino-pretty": "^3.2.0",
+    "standard": "^13.1.0",
     "supertest": "^4.0.2"
   }
 }

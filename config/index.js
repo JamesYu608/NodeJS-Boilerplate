@@ -9,7 +9,7 @@ const config = {
       DATABASE: process.env.RDS_DATABASE,
       USER: process.env.RDS_USER,
       PASSWORD: process.env.RDS_PASSWORD,
-      HOST: process.env.RDS_HOST,
+      HOST: process.env.RDS_HOST
     }
   }
 }

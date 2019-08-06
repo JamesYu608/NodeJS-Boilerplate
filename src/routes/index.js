@@ -22,17 +22,20 @@ function healthCheck (req, res) {
 }
 
 async function errorHandlingRoute (err, req, res, next) {
-  if (!(err instanceof AppError)) err = new AppError(err.name, err.message, 'Unknown error', err.toString(), false)
+  if (!(err instanceof AppError)) {
+    err = new AppError(err.name, err.message, 'Unknown error', err.toString(), false)
+  }
 
   const isOperationalError = await errorHandler(err)
-  if (!isOperationalError) {
-    process.exit(1)
+  if (isOperationalError) {
+    res.status(err.code)
+      .json({
+        code: err.code,
+        message: err.message,
+        id: req.sessionID
+      })
   } else {
-    res.status(err.code).json({
-      code: err.code,
-      message: err.message,
-      id: req.sessionID
-    })
+    process.exit(1)
   }
 }
 

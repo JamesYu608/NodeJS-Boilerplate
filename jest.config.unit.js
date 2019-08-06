@@ -1,6 +1,6 @@
-const config = require('./jest.config');
+const config = require('./jest.config')
 
-config.testRegex = '.unit.test.js';
-config.setupFilesAfterEnv = []; // Don't have to call setup files in unit testing
+config.testRegex = '.unit.test.js'
+config.setupFilesAfterEnv = [] // Don't have to call setup files in unit testing
 
-module.exports = config;
+module.exports = config

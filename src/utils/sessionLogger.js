@@ -6,7 +6,7 @@ const logger = new Proxy(sourceLogger, {
   get (target, property, receiver) {
     target = clsNamespace.get('loggerCls') || target
     return Reflect.get(target, property, receiver)
-  },
+  }
 })
 
 function init (req, res, next) {
