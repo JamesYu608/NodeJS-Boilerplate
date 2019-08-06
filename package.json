@@ -4,6 +4,7 @@
   "description": "Follow https://github.com/i0natan/nodebestpractices",
   "main": "index.js",
   "scripts": {
+    "start:dev": "node ./index.js | pino-pretty",
     "start": "node ./index.js",
     "test": "jest --config=jest.config.js --detectOpenHandles",
     "unit": "jest --config=jest.config.unit.js --detectOpenHandles",
@@ -14,14 +15,18 @@
   "dependencies": {
     "ajv": "^6.10.2",
     "body-parser": "^1.19.0",
+    "cls-hooked": "^4.2.2",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "knex": "^0.19.1",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "pino": "^5.13.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "jest": "^24.8.0",
+    "pino-pretty": "^3.2.0",
     "supertest": "^4.0.2"
   }
 }

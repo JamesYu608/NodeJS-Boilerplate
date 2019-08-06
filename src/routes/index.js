@@ -1,15 +1,16 @@
 const { Router } = require('express')
 const bodyParser = require('body-parser')
+const session = require('../middlewares/session')
 const users = require('./users')
 const errorHandler = require('../middlewares/errorHandler')
 const AppError = require('../utils/AppError')
-
 const apiRouter = Router()
 apiRouter.use(bodyParser.json())
 apiRouter.use('/users', users)
 
 const router = Router()
 router.get('/health', healthCheck)
+router.use(session)
 router.use('/api', apiRouter)
 router.use(errorHandlingRoute)
 
