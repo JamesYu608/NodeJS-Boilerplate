@@ -7,11 +7,11 @@ const errorHandler = require('../utils/errorHandler')
 const AppError = require('../utils/AppError')
 
 const apiRouter = Router()
-apiRouter.use(bodyParser.json())
 apiRouter.use('/users', users)
 
 const router = Router()
 router.get('/health', healthCheck)
+router.use(bodyParser.json())
 router.use(sessionLogger.init)
 router.use(loggingRequest)
 router.use('/api', apiRouter)

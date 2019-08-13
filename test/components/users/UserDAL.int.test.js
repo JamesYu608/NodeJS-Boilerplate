@@ -44,7 +44,7 @@ describe('[Integration][Component] UserDAL', () => {
     const result = await userDAL.update(user)
 
     // Assert
-    expect(result).toBe(true)
+    expect(result.name).toBe('Mark')
     const userByID = await userDAL.getByID(user.id)
     expect(user).toEqual(userByID)
   })

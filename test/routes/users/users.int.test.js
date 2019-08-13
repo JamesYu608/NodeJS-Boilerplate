@@ -62,7 +62,7 @@ describe('[Integration][Route] Users', () => {
         .expect(200)
 
       // Assert
-      expect(result).toHaveProperty('updated')
+      expect(result.name).toBe('Joe')
     })
   })
 
@@ -77,7 +77,7 @@ describe('[Integration][Route] Users', () => {
         .expect(200)
 
       // Assert
-      expect(result).toHaveProperty('deleted')
+      expect(result).toEqual({})
     })
   })
 })

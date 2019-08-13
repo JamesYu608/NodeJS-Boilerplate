@@ -13,7 +13,9 @@ async function updateUser (req, res) {
   const userDAL = new UserDAL(repositories)
   await userDAL.update(user)
   res.json({
-    updated: true
+    id: user.id,
+    name: user.name,
+    age: user.age
   })
 }
 
