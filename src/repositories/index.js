@@ -1,5 +1,6 @@
 const knex = require('knex')
-const { rds: rdsConfig } = require('../../config').repositories
+const Redis = require('ioredis')
+const { rds: rdsConfig, redis: redisConfig } = require('../../config').repositories
 
 const rdsConnection = knex({
   client: rdsConfig.CLIENT,
@@ -11,11 +12,22 @@ const rdsConnection = knex({
   }
 })
 
+const redis = new Redis({
+  host: redisConfig.HOST,
+  port: redisConfig.PORT,
+  retryStrategy (times) {
+    return Math.min(times * 100, 3000)
+  },
+  maxRetriesPerRequest: null
+})
+
 async function shutDown () {
+  await redis.quit()
   await rdsConnection.destroy()
 }
 
 module.exports = {
   rds: rdsConnection,
+  redis,
   shutDown
 }

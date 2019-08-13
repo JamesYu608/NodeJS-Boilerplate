@@ -10,6 +10,10 @@ const config = {
       USER: process.env.RDS_USER,
       PASSWORD: process.env.RDS_PASSWORD,
       HOST: process.env.RDS_HOST
+    },
+    redis: {
+      HOST: process.env.REDIS_HOST,
+      PORT: process.env.REDIS_PORT
     }
   }
 }
