@@ -32,7 +32,7 @@ async function errorHandlingRoute (err, req, res, next) {
       .json({
         code: err.code,
         message: err.message,
-        id: req.sessionID
+        sessionID: req.sessionID
       })
   } else {
     process.exit(1)
