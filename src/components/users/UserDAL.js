@@ -17,7 +17,7 @@ class UserDAL {
           [columns.AGE]: user.age
         })
       const id = result[0]
-      await this.userCache.setWithID(id, user)
+      await this.userCache.deleteByID(id)
       return id
     } catch (error) {
       throw AppError.badImplementation(null, `[SQL Error] Save user error: ${error}`)

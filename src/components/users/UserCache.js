@@ -1,3 +1,4 @@
+const config = require('../../../config')
 const User = require('./User')
 const { logger } = require('../../utils/sessionLogger')
 
@@ -9,16 +10,18 @@ class UserCache {
   }
 
   async setWithID (id, user) {
+    const KEY = `${KEY_ID}_${id}`
     try {
-      await this.cache.set(`${KEY_ID}_${id}`, JSON.stringify(user))
+      await this.cache.set(KEY, JSON.stringify(user), 'EX', config.CACHE_EXPIRATION_SECS)
     } catch (error) {
       logger.warn(`[UserCache Error] Set user error: ${error}`)
     }
   }
 
   async getByID (id) {
+    const KEY = `${KEY_ID}_${id}`
     try {
-      const result = await this.cache.get(`${KEY_ID}_${id}`)
+      const result = await this.cache.get(KEY)
       if (result) {
         logger.info(`[UserCache] Hit! Get user cache by ID: ${id}`)
         const user = new User(JSON.parse(result))
@@ -33,8 +36,9 @@ class UserCache {
   }
 
   async deleteByID (id) {
+    const KEY = `${KEY_ID}_${id}`
     try {
-      await this.cache.del(`${KEY_ID}_${id}`)
+      await this.cache.del(KEY)
     } catch (error) {
       logger.warn(`[UserCache Error] Delete user by ID error: ${error}`)
     }

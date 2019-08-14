@@ -25,6 +25,7 @@ const schema = {
   type: 'object',
   properties: {
     PORT: { type: 'number' },
+    CACHE_EXPIRATION_SECS: { type: 'integer' },
     repositories: {
       type: 'object',
       properties: {
@@ -34,7 +35,7 @@ const schema = {
       required: ['rds']
     }
   },
-  required: ['PORT', 'repositories']
+  required: ['PORT', 'CACHE_EXPIRATION_SECS', 'repositories']
 }
 const ajv = new Ajv({ removeAdditional: true, useDefaults: true, coerceTypes: true })
 const validate = ajv.compile(schema)
