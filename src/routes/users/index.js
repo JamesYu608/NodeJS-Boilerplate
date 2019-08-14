@@ -10,7 +10,7 @@ const router = Router()
 router.get('/', getAllUsers)
 router.get('/:id', getUser)
 router.post('/', schemaValidator(createUser.schema), createUser.route)
-router.put('/:id', updateUser)
+router.patch('/:id', updateUser)
 router.delete('/:id', deleteUser)
 
 module.exports = router
