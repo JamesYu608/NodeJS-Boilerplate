@@ -24,7 +24,7 @@
   "author": "jamesyu608@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.3",
     "body-parser": "^1.19.0",
     "cls-hooked": "^4.2.2",
     "dotenv": "^8.0.0",
